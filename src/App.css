@@ -298,7 +298,7 @@ form {
 
 fieldset {
   text-align: left;
-  margin-left: 1em;
+  margin-right: 1em;
   border: none;
   padding: 0 0 2em 0;
 }
@@ -326,6 +326,34 @@ input:focus {
   box-shadow: none;
   border: 2px solid var(--main-bg-color);
 }
+
+.checkmark-valid  {
+display:none;
+height: 30px; 
+position: absolute;
+margin-left: .3em;
+}
+
+input:valid + .checkmark-valid {
+  display: inline;
+  }
+  
+  input:not(:placeholder-shown):not(:focus):invalid + .checkmark-valid{
+    display: none;
+  
+    }
+  
+.checkmark-valid path {  
+    stroke-dashoffset: 1000px;
+    stroke-dasharray: 1000px;
+    animation: firstStage 0.3s forwards;
+  }
+  .checkmark-valid g {
+    fill-opacity: 0;
+    animation: secondStage .2s .5s forwards;
+  }
+  
+
 
 input:not(:placeholder-shown):not(:focus):invalid {
   border: 2px solid red;
@@ -413,6 +441,7 @@ input:not(:focus):valid {
 
 .rccs {
   margin-top: 1em;
+  margin-left: -1em;
 }
 .total-price {
   font-size: 2em;
@@ -535,11 +564,11 @@ input:not(:focus):valid {
 .check path {
   stroke-dashoffset: 1000px;
   stroke-dasharray: 1000px;
-  animation: firstStage 0.5s 0.8s forwards;
+  animation: firstStage 0.3s 0.8s forwards;
 }
 .check g {
   fill-opacity: 0;
-  animation: secondStage 1.5s 1.3s forwards;
+  animation: secondStage .6s 1.3s forwards;
 }
 
 @keyframes firstStage {
