@@ -327,6 +327,8 @@ input:focus {
   border: 2px solid var(--main-bg-color);
 }
 
+/* checkmark at credit card */
+
 .checkmark-valid  {
 display:none;
 height: 30px; 
@@ -353,7 +355,25 @@ input:valid + .checkmark-valid {
     animation: secondStage .2s .5s forwards;
   }
   
+.x-mark{
+  display:none;
+  height: 30px; 
+  position: absolute;
+  margin-left: .3em;
+}
 
+input:not(:placeholder-shown):not(:focus):invalid ~ .x-mark{
+  display:inline;
+}
+
+.x-mark path {
+  stroke-dashoffset: 100px;
+  animation: firstStage 0.3s  forwards;
+}
+.x-mark g {
+  fill-opacity: 0;
+  animation: secondStage .6s forwards;
+}
 
 input:not(:placeholder-shown):not(:focus):invalid {
   border: 2px solid red;
@@ -595,6 +615,10 @@ input:not(:focus):valid {
   }
   .confirmation-wrapper span {
     font-size: 1.5em;
+  }
+
+  .rccs{
+    margin-left: auto;
   }
 }
 

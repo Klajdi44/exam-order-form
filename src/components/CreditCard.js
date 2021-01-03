@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-credit-cards";
 import Check from "./Check";
+import Xmark from "./Xmark";
 
 import { formatCreditCardNumber, formatCVC, formatExpirationDate, formatFormData, allLetter } from "../modules/utils";
 
@@ -79,6 +80,7 @@ export default class CreditCard extends React.Component {
                     onFocus={this.handleInputFocus}
                   />
                   <Check />
+                  <Xmark />
                 </span>
 
 
@@ -98,7 +100,9 @@ export default class CreditCard extends React.Component {
                     onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus}
                   />
-                  <Check /></span>
+                  <Check />
+                  <Xmark />
+                </span>
 
               </div>
               <div className="form-group">
@@ -117,6 +121,7 @@ export default class CreditCard extends React.Component {
                     onFocus={this.handleInputFocus}
                   />
                   <Check />
+                  <Xmark />
                 </span>
               </div>
               <div className="form-group">
@@ -132,6 +137,7 @@ export default class CreditCard extends React.Component {
                     required onChange={this.handleInputChange}
                     onFocus={this.handleInputFocus} />
                   <Check />
+                  <Xmark />
                 </span>
               </div>
               <input type="hidden" name="issuer" value={issuer} />
