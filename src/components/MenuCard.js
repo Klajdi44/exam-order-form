@@ -7,7 +7,34 @@ function MenuCard(props) {
     gsap.fromTo(".menu-card", { opacity: 0, x: 100 + "%" }, { opacity: 1, x: 0 + "%", stagger: 0.2, duration: 1 });
   }, []);
 
-  return props.filteredBeers.map((beer) => {
+  // if (props.filteredBeers) {
+  //   return props.filteredBeers.map((beer) => {
+  //     return (
+  //       <div className="menu-card" key={beer.name}>
+  //         <div className="menu-content">
+  //           <img src={`/images/${beer.label}`} alt="Beer"></img>
+  //           <h1>{beer.name}</h1>
+  //           <p>{beer.description.overallImpression}</p>
+  //         </div>
+  //         <MenuOrder name={beer.name} />
+  //       </div>
+  //     );
+  //   });
+  // }
+  return props.unavailableBeers ? (
+    props.unavailableBeers.map(beer => {
+      return (
+
+        <div className="menu-card menu-unavailable" key={beer.name}>
+          <div className="menu-content">
+            <img src={`/images/${beer.label}`} alt="Beer"></img>
+            <h1>{beer.name}</h1>
+            <p>{beer.description.overallImpression}</p>
+          </div>
+        </div>
+      )
+    })
+  ) : props.filteredBeers.map((beer) => {
     return (
       <div className="menu-card" key={beer.name}>
         <div className="menu-content">
@@ -20,5 +47,7 @@ function MenuCard(props) {
     );
   });
 }
+
+
 
 export default MenuCard;

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import MenuCard from "./MenuCard";
 import MenuOrder from "./MenuOrder";
-import UnavailableBeers from "./UnavailableBeers";
 import { OrderContext } from "./OrderContext";
 
 function Menu(props) {
@@ -38,7 +37,8 @@ function Menu(props) {
 
         <MenuCard filteredBeers={props.filteredBeers} />
         <h1 className="unavailable-beer-heading"> Currently unavailable beers</h1>
-        <UnavailableBeers unavailableBeers={props.unavailableBeers} />
+        <MenuCard unavailableBeers={props.unavailableBeers} />
+
       </div>
 
       <div className="order">
