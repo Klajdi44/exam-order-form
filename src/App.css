@@ -601,7 +601,15 @@ input:not(:focus):valid {
     fill-opacity: 1;
   }
 }
-
+/* order input */
+.menu-order input.order-amount{
+  width: 50px;
+  background-color: #fff;
+  border: none;
+ font-size: 1em;
+ text-align: center;
+}
+/* *** */
 @media only screen and (min-width: 370px) {
   .confirmation-wrapper {
     width: 90%;
