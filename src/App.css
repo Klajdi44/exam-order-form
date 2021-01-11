@@ -252,6 +252,8 @@ button:focus {
 .order-price {
   grid-area: orderamount;
   text-align: center;
+  margin-top: -2em;
+  margin-bottom: 7em;
 }
 
 .overall-price > h1 {
@@ -632,7 +634,7 @@ input:not(:focus):valid {
 
 .barInfo::before{
   content: "";
-  background:  url(./beerimg.png);
+  background:  url(./images/beerimg.png);
   position: absolute; 
   top: 0;
   right: 0;
@@ -655,6 +657,31 @@ bottom: 0;
  font-size: 1.12em;
 }
 
+/* bottom cart */
+.cart {
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  background: var(--main-bg-color);
+  z-index: 1;
+  width:100%;
+}
+
+.cart img {
+height:80px;
+position: relative;
+}
+
+.cart h2{
+  position: absolute;
+  right: 35%;
+  top: 30%;
+  background: gray;
+  padding: .3em;
+  border-radius: 100%;
+}
+
 @media only screen and (min-width: 370px) {
   .confirmation-wrapper {
     width: 90%;
@@ -672,6 +699,9 @@ bottom: 0;
 
   .rccs{
     margin-left: auto;
+  }
+  .cart h2{
+    right: 39%;
   }
 }
 
@@ -743,7 +773,7 @@ bottom: 0;
 
   .barInfo::before{
     background-position:65%;
-    background:  url(./beerimg.png) ,url(./Dannie.png);
+    background:  url(./images/beerimg.png) ,url(./images/Dannie.png);
     background-repeat:no-repeat;
     background-size: contain ,contain;
     background-position: 45%, 85%;
@@ -753,6 +783,10 @@ bottom: 0;
   .filters-wrapper > span {
     font-size: 1.1em;
     margin-right: .5em;
+    }
+
+    .cart h2{
+      right: 45%;
     }
 }
 
@@ -788,6 +822,13 @@ bottom: 0;
     max-width: 60%;
     max-height: 55%;
   }
+  .cart{
+    display: none;
+  }
+
+.order-price {
+ margin: 0;
+}
 }
 
 @media only screen and (min-device-width: 1200px) {
@@ -832,4 +873,3 @@ bottom: 0;
     width: 90.5%;
   }
 }
-

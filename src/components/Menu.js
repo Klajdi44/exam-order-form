@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import MenuCard from "./MenuCard";
 import MenuOrder from "./MenuOrder";
 import BarInfo from "./BarInfo";
+import Cart from "./Cart";
 import { OrderContext } from "./OrderContext";
 
 function Menu(props) {
@@ -52,6 +53,7 @@ function Menu(props) {
 
       <div className="order">
         <h1>Your Order</h1>
+        <Cart />
         <div className="order-grid">
           <div className="order-cards">
             <ul>
