@@ -8,7 +8,7 @@ import { OrderContext } from "./OrderContext";
 function Menu(props) {
   // eslint-disable-next-line
   const [orderObj, setOrderObj] = useContext(OrderContext);
-  const [isBarOpened] = useState(new Date().getHours() > 21 ? false : new Date().getHours() < 6 ? false : true)
+  const [isBarOpened] = useState(new Date().getHours() > 23 ? false : new Date().getHours() < 6 ? false : true)
 
   function updateCategory(e) {
     props.setCategory(e.target.innerText);
