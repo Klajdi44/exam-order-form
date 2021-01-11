@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import MenuCard from "./MenuCard";
 import MenuOrder from "./MenuOrder";
+import BarInfo from "./BarInfo";
 import { OrderContext } from "./OrderContext";
 
 function Menu(props) {
   // eslint-disable-next-line
   const [orderObj, setOrderObj] = useContext(OrderContext);
+  const [isBarOpened] = useState(new Date().getHours() > 21 ? false : new Date().getHours() < 6 ? false : true)
 
   function updateCategory(e) {
     props.setCategory(e.target.innerText);
@@ -17,21 +19,28 @@ function Menu(props) {
       filteredCategories.push(availableBeer.category);
     }
   });
-
+  console.log(isBarOpened);
   return (
     <article className="menu-wrapper">
       <div className="menu">
+        <BarInfo
+          apiData={props.apiData}
+        />
         <div className="filters-wrapper">
+          <span>Filter by</span>
           <button className="filters" disabled={props.category === "All"} onClick={updateCategory}>
             All
           </button>
           {filteredCategories.map((beerCategory) => {
             return (
-              <button key={beerCategory} className="filters" disabled={beerCategory === props.category} onClick={updateCategory}>
+              <button key={beerCategory}
+                className="filters"
+                disabled={beerCategory === props.category}
+                onClick={updateCategory}>
                 {beerCategory}
               </button>
             );
-          })}{" "}
+          })}
         </div>
         <h1>Our Beer selection</h1>
 
@@ -71,7 +80,7 @@ function Menu(props) {
               <br />
             </div>
 
-            <button onClick={() => orderObj.map((beer) => (beer.price > 0 ? props.setPage("formPage") : null))}>Proceed To Checkout</button>
+            <button onClick={() => orderObj.map((beer) => (beer.price > 0 && isBarOpened ? props.setPage("formPage") : null))}> {isBarOpened ? 'Proceed To Checkout' : 'Bar is closed'}</button>
           </div>
         </div>
       </div>

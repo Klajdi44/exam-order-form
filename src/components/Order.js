@@ -16,10 +16,10 @@ function Order(props) {
 
 
   const unavailableBeers = beersFromList.filter((beers) => !beersFromTap.includes(beers.name));
-  let updated = filteredBeers.filter((beer) => beer.category === category);
+  let clickFilterBeers = filteredBeers.filter((beer) => beer.category === category);
 
   if (category === "All") {
-    updated = filteredBeers;
+    clickFilterBeers = filteredBeers;
   }
 
   // eslint-disable-next-line
@@ -36,10 +36,25 @@ function Order(props) {
   return (
     <section>
       {page === "orderPage" ? (
-        <Menu setPage={setPage} setCategory={setCategory} category={category} apiData={props.apiData} filteredBeers={updated} allBeers={filteredBeers} unavailableBeers={unavailableBeers} />
+        <Menu setPage={setPage}
+          setCategory={setCategory}
+          category={category}
+          apiData={props.apiData}
+          filteredBeers={clickFilterBeers}
+          allBeers={filteredBeers}
+          unavailableBeers={unavailableBeers} />
       ) : null}
-      {page === "formPage" ? <Form setPage={setPage} setConfirmationP={setConfirmationP} /> : null}
-      {page === "confirmationPage" ? <Confirmation setCategory={setCategory} confirmationP={confirmationP} setPage={setPage} /> : null}
+      {page === "formPage" ?
+        <Form
+          setPage={setPage}
+          setConfirmationP={setConfirmationP} />
+        : null}
+      {page === "confirmationPage" ?
+        <Confirmation
+          setCategory={setCategory}
+          confirmationP={confirmationP}
+          setPage={setPage} />
+        : null}
     </section>
   );
 }

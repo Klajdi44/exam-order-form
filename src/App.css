@@ -88,6 +88,9 @@ button {
 .filters-wrapper {
   margin: auto;
 }
+.filters-wrapper > span {
+margin-left: .6em;
+}
 
 .filters:disabled {
   pointer-events: none;
@@ -128,6 +131,7 @@ button:focus {
   padding: 1em;
   font-size: var(--header-font-size);
   font-weight: var(--header-font-weight);
+  margin: 1em 0 0 0;
 }
 
 .unavailable-beer-heading {
@@ -610,6 +614,47 @@ input:not(:focus):valid {
  text-align: center;
 }
 /* *** */
+
+
+/* Introduction to moonbar */
+.barInfo{
+  margin: 2em 1em 2em 1em;
+  padding: 3em 2em;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 250px;
+  background:  var(--main-bg-color);
+  position: relative;
+
+}
+
+.barInfo::before{
+  content: "";
+  background:  url(./beerimg.png);
+  position: absolute; 
+  top: 0;
+  right: 0;
+  left: 0;
+bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 80%;
+  opacity: .1;
+}
+
+.barInfo h1{
+  line-height: 2;
+  font-size: 1.36em;
+}
+
+.barInfo p{
+ line-height: 1.3;
+ max-width: 30ch;
+ font-size: 1.12em;
+}
+
 @media only screen and (min-width: 370px) {
   .confirmation-wrapper {
     width: 90%;
@@ -680,6 +725,35 @@ input:not(:focus):valid {
   .check {
     width: 100px;
   }
+
+  .barInfo{
+    flex-direction: row;
+    align-items: center;
+    width: 93%;
+  }
+  .barInfo h1{
+    font-size: 2.5em;
+  }
+  .barInfo h2{
+    font-size: 1.8em;
+  }
+  .barInfo p{
+    font-size: 1.1em;
+  }
+
+  .barInfo::before{
+    background-position:65%;
+    background:  url(./beerimg.png) ,url(./Dannie.png);
+    background-repeat:no-repeat;
+    background-size: contain ,contain;
+    background-position: 45%, 85%;
+    opacity: 0.2;
+
+  }
+  .filters-wrapper > span {
+    font-size: 1.1em;
+    margin-right: .5em;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -747,4 +821,15 @@ input:not(:focus):valid {
   .filters {
     font-size: var(--header-font-size);
   }
+
+  
+  .barInfo::before{
+    background-position: 45%, 80%;
+  }
 }
+@media only screen and (min-device-width: 1500px){
+  .barInfo{
+    width: 90.5%;
+  }
+}
+

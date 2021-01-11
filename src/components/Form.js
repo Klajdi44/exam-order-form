@@ -40,7 +40,7 @@ function Form(props) {
           {props.setConfirmationP(data.id)}
           {console.log(data.id)}
         </div>
-      ) : null;
+          ) : <div> Something went wrong, Please Refresh and try again </div>;
     });
   }
 
