@@ -1,18 +1,26 @@
-import React, { useContext, useEffect } from "react";
-import gsap from "gsap";
-import { OrderContext } from "./OrderContext";
-import Checkmark from "./Checkmark";
+import React, { useContext, useEffect } from 'react';
+import gsap from 'gsap';
+import { OrderContext } from './OrderContext';
+import Checkmark from './Checkmark';
 
 function Confirmation(props) {
   const [orderObj, setOrderObj] = useContext(OrderContext);
 
-  const resetBeers = orderObj.map(({ amount, price, ...restOfData }) => ({ ...restOfData, amount: 0, price: 0 }));
+  const resetBeers = orderObj.map(({ amount, price, ...restOfData }) => ({
+    ...restOfData,
+    amount: 0,
+    price: 0,
+  }));
 
   useEffect(() => {
-    gsap.fromTo(".confirmation-wrapper", { opacity: 0, ease: "expo.out", y: -100 + "%" }, { opacity: 1, y: 0 + "%", duration: 1 });
+    gsap.fromTo(
+      '.confirmation-wrapper',
+      { opacity: 0, ease: 'expo.out', y: -100 + '%' },
+      { opacity: 1, y: 0 + '%', duration: 1 }
+    );
   }, []);
   return (
-    <section className="confirmation-wrapper">
+    <section className='confirmation-wrapper'>
       <h1>Thank you for your order</h1>
       <Checkmark />
       <h2>
@@ -20,9 +28,9 @@ function Confirmation(props) {
       </h2>
       <button
         onClick={() => {
-          props.setPage("orderPage");
+          props.setPage('orderPage');
           setOrderObj(resetBeers);
-          props.setCategory("All");
+          props.setCategory('All');
         }}
       >
         Order again

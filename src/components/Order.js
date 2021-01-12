@@ -1,24 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
-import Form from "./Form";
-import Menu from "./Menu";
-import Confirmation from "./Confirmation";
+import React, { useContext, useEffect, useState } from 'react';
+import Form from './Form';
+import Menu from './Menu';
+import Confirmation from './Confirmation';
 
-import { OrderContext } from "./OrderContext";
+import { OrderContext } from './OrderContext';
 
 function Order(props) {
-  const [page, setPage] = useState("orderPage");
-  const [confirmationP, setConfirmationP] = useState("");
-  const [category, setCategory] = useState("All");
+  const [page, setPage] = useState('orderPage');
+  const [confirmationP, setConfirmationP] = useState('');
+  const [category, setCategory] = useState('All');
 
   const beersFromList = props.apiData[0];
-  const beersFromTap = props.apiData[1].taps.map((beer) => beer.beer);
-  const filteredBeers = beersFromList.filter((beers) => beersFromTap.includes(beers.name));
+  const beersFromTap = props.apiData[1].taps.map(beer => beer.beer);
+  const filteredBeers = beersFromList.filter(beers =>
+    beersFromTap.includes(beers.name)
+  );
 
+  const unavailableBeers = beersFromList.filter(
+    beers => !beersFromTap.includes(beers.name)
+  );
+  let clickFilterBeers = filteredBeers.filter(
+    beer => beer.category === category
+  );
 
-  const unavailableBeers = beersFromList.filter((beers) => !beersFromTap.includes(beers.name));
-  let clickFilterBeers = filteredBeers.filter((beer) => beer.category === category);
-
-  if (category === "All") {
+  if (category === 'All') {
     clickFilterBeers = filteredBeers;
   }
 
@@ -26,7 +31,7 @@ function Order(props) {
   const [orderObj, setOrderObj] = useContext(OrderContext);
 
   useEffect(() => {
-    const orders = filteredBeers.map((tap) => {
+    const orders = filteredBeers.map(tap => {
       return { name: tap.name, amount: 0, price: 0 };
     });
     setOrderObj(orders);
@@ -35,26 +40,27 @@ function Order(props) {
 
   return (
     <section>
-      {page === "orderPage" ? (
-        <Menu setPage={setPage}
+      {page === 'orderPage' ? (
+        <Menu
+          setPage={setPage}
           setCategory={setCategory}
           category={category}
           apiData={props.apiData}
           filteredBeers={clickFilterBeers}
           allBeers={filteredBeers}
-          unavailableBeers={unavailableBeers} />
+          unavailableBeers={unavailableBeers}
+        />
       ) : null}
-      {page === "formPage" ?
-        <Form
-          setPage={setPage}
-          setConfirmationP={setConfirmationP} />
-        : null}
-      {page === "confirmationPage" ?
+      {page === 'formPage' ? (
+        <Form setPage={setPage} setConfirmationP={setConfirmationP} />
+      ) : null}
+      {page === 'confirmationPage' ? (
         <Confirmation
           setCategory={setCategory}
           confirmationP={confirmationP}
-          setPage={setPage} />
-        : null}
+          setPage={setPage}
+        />
+      ) : null}
     </section>
   );
 }
