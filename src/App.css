@@ -57,6 +57,11 @@ button {
   background-color: white;
 }
 
+button:disabled {
+  background: gray;
+  color: var(--main-bg-color);
+}
+
 /* Menu */
 /* Menu cards */
 
@@ -196,8 +201,8 @@ button:focus {
 
 .menu-order > button {
   margin: 0 0.5em;
-  padding: 0.3em;
-  width: 10%;
+  padding: 0.3em 0.6em;
+  width: 15%;
   border: none;
   border-radius: 10px;
   font-size: var(--header-font-size);
@@ -615,6 +620,7 @@ input:not(:focus):valid {
   border: none;
   font-size: 1em;
   text-align: center;
+  border-radius: 10px;
 }
 /* *** */
 
@@ -677,8 +683,22 @@ input:not(:focus):valid {
   right: 35%;
   top: 30%;
   background: gray;
-  padding: 0.3em;
-  border-radius: 100%;
+  padding: 0.3em 0.4em;
+  border-radius: 50px;
+}
+
+.cart-show {
+  animation: grow-nr 0.3s ease forwards;
+}
+@keyframes grow-nr {
+  from {
+    opacity: 0.5;
+    font-size: 1.3em;
+  }
+  to {
+    opacity: 1;
+    font-size: 1.6em;
+  }
 }
 
 @media only screen and (min-width: 370px) {
@@ -786,6 +806,10 @@ input:not(:focus):valid {
 
   .cart h2 {
     right: 45%;
+  }
+  .menu-order > button {
+    padding: 0.3em 1.3em;
+    width: 20%;
   }
 }
 

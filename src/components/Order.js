@@ -10,7 +10,9 @@ function Order(props) {
   const [confirmationP, setConfirmationP] = useState('');
   const [category, setCategory] = useState('All');
 
+  //Whole object with beers, their descriptions etc
   const beersFromList = props.apiData[0];
+  //arr that has all the names of beers that on tap.
   const beersFromTap = props.apiData[1].taps.map(beer => beer.beer);
   const filteredBeers = beersFromList.filter(beers =>
     beersFromTap.includes(beers.name)

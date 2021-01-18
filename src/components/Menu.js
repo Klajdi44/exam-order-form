@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import MenuCard from './MenuCard';
-import MenuOrder from './MenuOrder';
+// import MenuOrder from './MenuOrder';
+import SideBar from './SideBar';
 import BarInfo from './BarInfo';
 import Cart from './Cart';
 import { OrderContext } from './OrderContext';
@@ -9,7 +10,7 @@ function Menu(props) {
   // eslint-disable-next-line
   const [orderObj, setOrderObj] = useContext(OrderContext);
   const [isBarOpened] = useState(
-    new Date().getHours() > 23
+    new Date().getHours() > 22
       ? false
       : new Date().getHours() < 6
       ? false
@@ -26,7 +27,7 @@ function Menu(props) {
       filteredCategories.push(availableBeer.category);
     }
   });
-  console.log(isBarOpened);
+  // console.log(isBarOpened);
   return (
     <article className='menu-wrapper'>
       <div className='menu'>
@@ -62,53 +63,8 @@ function Menu(props) {
         </h1>
         <MenuCard unavailableBeers={props.unavailableBeers} />
       </div>
-
-      <div className='order'>
-        <h1>Your Order</h1>
-        <Cart />
-        <div className='order-grid'>
-          <div className='order-cards'>
-            <ul>
-              {orderObj.map(order => {
-                if (order.amount > 0) {
-                  return (
-                    <li key={order.name + Math.random()}>
-                      <h1>{order.name}</h1>
-                      <MenuOrder showCheckoutPrice={true} name={order.name} />
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-          </div>
-          <div className='order-price'>
-            <div className='overall-price'>
-              <h1>Total</h1>
-              <span>
-                {orderObj.reduce((acc, value) => {
-                  return acc + value.price;
-                }, 0)}
-                DKK
-              </span>
-              <br />
-            </div>
-
-            <button
-              onClick={() =>
-                orderObj.map(beer =>
-                  isBarOpened && beer.price > 0
-                    ? props.setPage('formPage')
-                    : null
-                )
-              }
-            >
-              {' '}
-              {isBarOpened ? 'Proceed To Checkout' : 'Bar is closed'}
-            </button>
-          </div>
-        </div>
-      </div>
+      <Cart />
+      <SideBar isBarOpened={isBarOpened} setPage={props.setPage} />
     </article>
   );
 }

@@ -1,5 +1,4 @@
 const BarInfo = props => {
-  console.log(props.apiData);
   return (
     <div className='barInfo'>
       <div>
@@ -9,7 +8,10 @@ const BarInfo = props => {
             ? 'Foobar'
             : props.apiData[1].bar.name}
         </h1>
-        <p>Here you can choose a wide variety of unique mouthwatering beers.</p>
+        <p>
+          The best bar in town where you can find a wide variety of unique
+          mouthwatering beers.
+        </p>
       </div>
       <div>
         <p>We are currently</p>
@@ -30,7 +32,7 @@ const BarInfo = props => {
             ? props.apiData[1].bar.closingTime === '22:00:00'
               ? 'Closing at 10PM'
               : 'Closing at' + props.apiData[1].bar.closingTime
-            : 'Opening at 7AM'}
+            : 'Opening at 7 AM'}
         </p>
       </div>
     </div>

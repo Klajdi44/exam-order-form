@@ -9,12 +9,13 @@ function Cart(props) {
   const amount = orderObj.reduce((acc, value) => {
     return acc + value.amount;
   }, 0);
-  console.log(amount);
 
   return (
     <div className='cart'>
-      <img onClick={() => window.scrollTo(0, 10000)} src={img} alt='beer' />
-      <h2>{amount}</h2>
+      <div onClick={() => window.scrollTo(0, 10000)}>
+        <img src={img} alt='beer' />
+        <h2 className={amount > 0 ? 'cart-show' : null}> {amount}</h2>
+      </div>
     </div>
   );
 }
