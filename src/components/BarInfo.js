@@ -1,4 +1,5 @@
 const BarInfo = props => {
+
   return (
     <div className='barInfo'>
       <div>
